@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Demo Game | Round 2 of MSP | Finding Diamond</title>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+   <div class="brand">Round 2 | Task of MSP Candidates</div>
+    <div class="address-bar">Game Product | Finding Diamond</div>
+    
+      <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+                <a class="navbar-brand" href="index.html">Finding Diamond</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="demo.html">Demo Game</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Demo Game
+                        <strong>Finding Diamond</strong>
+                    </h2>
+                    <hr>
+                </div>
+                <div class="col-lg-12 text-center">
+                      <meta charset="UTF-8">
+                    
+		<canvas id="myCanvas" width="900px" height="585px">
+			Your browser doesn't support this game.
+		</canvas>
+		<script src="js/game/TrapMove.js" > </script> 
+		<script src="js/game/Snakemove.js" > </script>
+		<script src="js/game/drawScene.js" > </script>
+		
+		
+		
+		<script>
+			//Number on map: 0:background, 1: Diamond, 2: Wall, 9: Boy, 4:Trap, 3:Body, 5 6 7 8 : head left up right down
+			var Map = [
+			[0,0,0,0,0,0,2,1,2,0,0,0,0,0,0,0,0,0,0,0],
+			[0,2,2,0,2,0,2,0,2,0,2,4,0,0,4,0,2,6,0,0],
+			[0,2,2,0,2,0,0,4,2,0,2,0,4,4,4,0,2,3,0,4],
+			[0,2,2,0,2,0,0,1,2,0,2,0,4,1,0,0,2,3,4,0],
+			[0,2,2,0,2,4,0,0,2,0,2,0,4,4,0,0,2,3,0,4],
+			[0,2,2,6,2,0,0,0,2,0,2,0,4,0,0,4,2,3,0,0],
+			[0,2,2,3,2,1,0,0,2,0,0,0,0,0,0,0,0,3,0,0],
+			[0,2,2,3,2,4,0,0,2,2,2,2,2,2,2,2,2,2,0,4],
+			[0,2,2,3,2,0,0,4,2,1,0,0,0,4,1,0,2,0,1,0],
+			[0,2,2,3,2,4,0,0,2,4,0,4,0,0,4,0,2,4,4,0],
+			[0,2,2,3,2,0,0,0,2,0,0,1,4,0,0,0,2,0,0,0],
+			[0,2,2,0,0,2,0,0,0,4,4,0,2,4,0,4,2,0,4,0],
+			[0,0,0,9,2,1,0,0,0,0,0,0,2,0,0,0,0,0,4,0]
+			];
+			
+			var imgBG = new Image;imgBG.src = "img/game/997-small.jpg";
+			var imgPLayer = new Image;imgPLayer.src = "img/game/Converse_Characters.png";
+			var imgPLayerStar = new Image;imgPLayerStar.src = "img/game/Characters_Star.png";
+			var imgBG = new Image;imgBG.src = "img/game/997-small.jpg";
+			var imgDiamond = new Image;imgDiamond.src = "img/game/diamond-red.png";
+			var imgTrap = new Image;imgTrap.src = "img/game/trap.png";
+			var imgWall = new Image;imgWall.src = "img/game/wall.png";
+			var imgRip = new Image;imgRip.src = "img/game/Rip.png";
+			
+			var imgHeadleft = new Image;imgHeadleft.src = "img/game/head_left.png";
+			var imgHeadright = new Image;imgHeadright.src = "img/game/head_right.png";
+			var imgHeadup = new Image;imgHeadup.src = "img/game/head_up.png";
+			var imgHeaddown = new Image;imgHeaddown.src = "img/game/head_down.png";
+			var imgBody = new Image;imgBody.src = "img/game/body.png";
+			var imgStar = new Image;imgStar.src = "img/game/star.png";
+			var picturerSize = 45;
+			
+			window.onload = function() {
+				var myVar = setInterval(Snakemove, 90);
+				var myVar2 = setInterval(TrapMove, 400);
+				document.addEventListener("keydown",onKeyPressed,false);
+			} 
+			function drawStar(){
+				Map[11][1] = 11;
+				Map[11][4] = 2;
+				Map[3][14] = 4;
+				drawScene();
+				}
+			function drawWall_1(){
+				Map[6][16] = 2;
+				drawScene();
+				}
+			function drawWall_2(){
+				Map[0][16] = 2;
+				drawScene();
+				}
+			function onKeyPressed (event)
+			{
+				
+				var oldPos = findPLayerOnMap();
+				var newPos = { "row":oldPos.row, "col":oldPos.col};
+				if(event.keyCode == 38)  //case up
+				{
+					if(newPos.row > 0 && Map[newPos.row-1][newPos.col] != 2)
+					newPos.row--;
+				}
+				if(event.keyCode == 40)  //case down
+				{
+					if(newPos.row < (Map.length -1) && Map[newPos.row+1][newPos.col] != 2)
+					newPos.row++;
+				}
+				if(event.keyCode == 37)  //case left
+				{
+					if(newPos.col > 0 && Map[newPos.row][newPos.col-1] != 2)
+					newPos.col--;
+				}
+				if(event.keyCode == 39)  //case right
+				{
+					if(newPos.col < (Map[newPos.row].length-1) && Map[newPos.row][newPos.col+1] != 2)
+					newPos.col++;
+				}
+				
+				if(checkWin())
+				{
+					drawScene();
+					return;
+				}
+				else if(checkDeath(newPos.row,newPos.col))
+				{
+					if(Map[oldPos.row][oldPos.col]== 9)
+					{
+						Map[oldPos.row][oldPos.col]=0;
+						Map[newPos.row][newPos.col]=44;
+					}
+					else if(Map[oldPos.row][oldPos.col]== 99)
+					{
+						Map[oldPos.row][oldPos.col]=0;
+						Map[newPos.row][newPos.col]=9;
+					}
+				}
+				else if(checkStar(newPos.row,newPos.col))
+				{
+					Map[oldPos.row][oldPos.col]=0;
+					Map[newPos.row][newPos.col]=99;
+					
+				}
+				else
+				{
+					if(Map[oldPos.row][oldPos.col]== 9)
+					{
+						Map[oldPos.row][oldPos.col]=0;
+						Map[newPos.row][newPos.col]=9;
+					}
+					else if(Map[oldPos.row][oldPos.col] == 99)
+					{
+						Map[oldPos.row][oldPos.col]=0;
+						Map[newPos.row][newPos.col]=99;
+					}
+				}
+				drawScene();
+				if(Map[8][18] == 9)
+				{
+					drawStar();
+					alert("You should take the Star to break the Trap");
+				}
+				if(Map[6][15] == 9 ||  Map[6][15] == 99)
+				{
+					drawWall_1();
+				}
+				if(Map[0][15] == 9 ||  Map[0][15] == 99)
+				{
+					drawWall_2();
+				}
+			}
+			function checkStar (row,col)
+			{
+				if(Map[row][col] == 11)
+				{
+					return true;
+				}
+				return false;
+			}
+			function checkDeath(row,col)
+			{
+				if(Map[row][col] == 4)
+				{
+					return true;
+				}
+				return false;
+			}
+			function checkDeath2()
+			{
+				for(var row=0;row<Map.length;row++)
+				{
+					for(var col=0;col<Map[row].length;col++)
+					{
+						if(Map[row][col] == 9 ||Map[row][col] == 99)
+							return false;
+					}
+				}
+				return true;
+			}
+			function checkWin()
+			{
+				for(var row=0;row<Map.length;row++)
+				{
+					for(var col=0;col<Map[row].length;col++)
+					{
+						if(Map[row][col] == 1)
+							return false;
+					}
+				}
+				return true;
+			}
+			function findPLayerOnMap()
+			{
+				for(var row=0;row<Map.length;row++)
+				{
+					for(var col=0;col<Map[row].length;col++)
+					{
+						if(Map[row][col] == 9 || Map[row][col] == 99)
+							return { "row":row, "col":col};
+					}
+				}
+				return null;
+			}
+			
+		</script>
+                    <br/>
+                    <a href="demo.html" class="btn btn-default btn-lg">Re-Play</a>
+                    <hr>
+                    
+                </div>
+              
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Du Van Nguyen 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
